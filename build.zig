@@ -19,7 +19,7 @@ pub fn build(b: *std.Build) void {
         .name = "zig-irc-bot",
         // In this case the main source file is merely a path, however, in more
         // complicated build scripts, this could be a generated file.
-        .root_source_file = b.path("src/test/inc.zig"),
+        .root_source_file = b.path("src/test_inc.zig"),
         .target = target,
         .optimize = optimize,
     });
@@ -35,10 +35,6 @@ pub fn build(b: *std.Build) void {
         .target = target,
         .optimize = optimize,
     });
-
-    const main_inc = b.createModule(.{ .root_source_file = .{ .src_path = "src/inc.zig" } });
-
-    exe.root_module.addImport("main", main_inc);
 
     // This declares intent for the executable to be installed into the
     // standard location when the user invokes the "install" step (the default
@@ -71,7 +67,7 @@ pub fn build(b: *std.Build) void {
     // Creates a step for unit testing. This only builds the test executable
     // but does not run it.
     const lib_unit_tests = b.addTest(.{
-        .root_source_file = b.path("src/test/inc.zig"),
+        .root_source_file = b.path("src/test_inc.zig"),
         .target = target,
         .optimize = optimize,
     });
