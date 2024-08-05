@@ -1,4 +1,4 @@
-const irc_client = @import("./../irc_client.zig");
+const irc_client = @import("irc_client.zig");
 const log = @import("std").log;
 
 test "read_irc_stream" {
